@@ -19,6 +19,10 @@
 		48544AFB2CC07EE0000860D8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48544AFA2CC07EE0000860D8 /* MainView.swift */; };
 		48544AFD2CC07F6F000860D8 /* hiragana.json in Resources */ = {isa = PBXBuildFile; fileRef = 48544AFC2CC07F6F000860D8 /* hiragana.json */; };
 		48544AFF2CC07F95000860D8 /* katakana.json in Resources */ = {isa = PBXBuildFile; fileRef = 48544AFE2CC07F95000860D8 /* katakana.json */; };
+		48E504D22CC1488D00A314E0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E504D12CC1488D00A314E0 /* ProfileView.swift */; };
+		48E504D42CC148A600A314E0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E504D32CC148A600A314E0 /* CoreDataManager.swift */; };
+		48E504D72CC1492700A314E0 /* KanaDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48E504D52CC1492700A314E0 /* KanaDataModel.xcdatamodeld */; };
+		48E504D92CC14BC800A314E0 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E504D82CC14BC800A314E0 /* PersistenceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		48544AFA2CC07EE0000860D8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		48544AFC2CC07F6F000860D8 /* hiragana.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hiragana.json; sourceTree = "<group>"; };
 		48544AFE2CC07F95000860D8 /* katakana.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = katakana.json; sourceTree = "<group>"; };
+		48E504D12CC1488D00A314E0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		48E504D32CC148A600A314E0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		48E504D62CC1492700A314E0 /* KanaDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KanaDataModel.xcdatamodel; sourceTree = "<group>"; };
+		48E504D82CC14BC800A314E0 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +123,10 @@
 				48544AFA2CC07EE0000860D8 /* MainView.swift */,
 				48544AFC2CC07F6F000860D8 /* hiragana.json */,
 				48544AFE2CC07F95000860D8 /* katakana.json */,
+				48E504D12CC1488D00A314E0 /* ProfileView.swift */,
+				48E504D32CC148A600A314E0 /* CoreDataManager.swift */,
+				48E504D52CC1492700A314E0 /* KanaDataModel.xcdatamodeld */,
+				48E504D82CC14BC800A314E0 /* PersistenceController.swift */,
 			);
 			path = LearnKanas;
 			sourceTree = "<group>";
@@ -276,10 +288,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E504D92CC14BC800A314E0 /* PersistenceController.swift in Sources */,
+				48E504D72CC1492700A314E0 /* KanaDataModel.xcdatamodeld in Sources */,
 				48544ACE2CC079EC000860D8 /* ContentView.swift in Sources */,
 				48544AF92CC07EA7000860D8 /* DataStore.swift in Sources */,
 				48544AF72CC07E7E000860D8 /* Kana.swift in Sources */,
 				48544AFB2CC07EE0000860D8 /* MainView.swift in Sources */,
+				48E504D22CC1488D00A314E0 /* ProfileView.swift in Sources */,
+				48E504D42CC148A600A314E0 /* CoreDataManager.swift in Sources */,
 				48544ACC2CC079EC000860D8 /* LearnKanasApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,6 +645,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		48E504D52CC1492700A314E0 /* KanaDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				48E504D62CC1492700A314E0 /* KanaDataModel.xcdatamodel */,
+			);
+			currentVersion = 48E504D62CC1492700A314E0 /* KanaDataModel.xcdatamodel */;
+			name = KanaDataModel.xcdatamodeld;
+			path = /Users/user266820/Desktop/LearnKanas/LearnKanas/KanaDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 48544AC02CC079EC000860D8 /* Project object */;
 }

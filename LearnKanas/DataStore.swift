@@ -8,7 +8,7 @@ class DataStore {
     static func loadKanas() {
         hiraganaList = loadJson(fileName: "hiragana.json")
         katakanaList = loadJson(fileName: "katakana.json")
-        mixedList = hiraganaList + katakanaList // Adiciona as duas listas
+        mixedList = hiraganaList + katakanaList
     }
 
     private static func loadJson(fileName: String) -> [Kana] {
@@ -30,10 +30,13 @@ class DataStore {
     static func getKana(listType: String, position: Int) -> Kana {
         switch listType {
         case "hiragana":
+            guard position < hiraganaList.count else { fatalError("Índice fora do limite.") }
             return hiraganaList[position]
         case "katakana":
+            guard position < katakanaList.count else { fatalError("Índice fora do limite.") }
             return katakanaList[position]
         case "mixed":
+            guard position < mixedList.count else { fatalError("Índice fora do limite.") }
             return mixedList[position]
         default:
             fatalError("Tipo de lista inválido")

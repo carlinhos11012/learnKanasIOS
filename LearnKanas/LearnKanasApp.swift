@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
-struct LearnKanasApp: App {
+struct YourApp: App {
+    let persistenceController = PersistenceController.shared
+
     var body: some Scene {
         WindowGroup {
-            MainView() // Chama a MainView como tela principal
+            ContentView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
+

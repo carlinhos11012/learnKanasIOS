@@ -1,24 +1,22 @@
-//
-//  ContentView.swift
-//  LearnKanas
-//
-//  Created by user266820 on 10/16/24.
-//
-
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+        NavigationView {
+            VStack {
+                NavigationLink(destination: MainView()) {
+                    Text("Página Principal")
+                        .font(.title)
+                        .padding()
+                }
 
-#Preview {
-    ContentView()
+                NavigationLink(destination: ProfileView()) {
+                    Text("Perfil")
+                        .font(.title)
+                        .padding()
+                }
+            }
+        }
+    }
 }

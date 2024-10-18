@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreData
 
 struct MainView: View {
     @State private var difficultyLevel: Double = 1
@@ -6,7 +7,9 @@ struct MainView: View {
     @State private var inputText: String = ""
     @State private var randomKanaList: [Kana] = []
     @State private var answer: String = ""
-    @State private var showPortuguese: Bool = false // Novo estado para controlar a exibição
+    @State private var showPortuguese: Bool = false
+
+    @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
         VStack {
@@ -33,7 +36,7 @@ struct MainView: View {
                             } else {
                                 Text(kana.portuguese)
                                     .font(.subheadline)
-                                    .opacity(0) // Oculta o texto
+                                    .opacity(0)
                             }
                         }
                         .background(Color.blue.opacity(0.1))
@@ -52,11 +55,12 @@ struct MainView: View {
                     if newValue.lowercased() == answer.lowercased() {
                         updateKanaViews(level: Int(difficultyLevel))
                         inputText = ""
+                        saveScore()
                     }
                 }
 
             Button(action: {
-                showPortuguese.toggle() // Alterna a exibição das traduções
+                showPortuguese.toggle()
             }) {
                 Image(systemName: "questionmark.circle")
                     .resizable()
@@ -96,9 +100,36 @@ struct MainView: View {
         randomKanaList.removeAll()
         answer = ""
         for _ in 0..<level {
-            let kana = DataStore.getKana(listType: listType, position: Int.random(in: 0..<DataStore.getSize(listType: listType)))
+            let position = Int.random(in: 0..<DataStore.getSize(listType: listType))
+            let kana = DataStore.getKana(listType: listType, position: position)
             randomKanaList.append(kana)
             answer += kana.portuguese
         }
     }
+
+    private func saveScore() {
+        // Cria uma busca para encontrar o KanaScore existente para o listType atual
+        let fetchRequest: NSFetchRequest<KanaScore> = KanaScore.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "listType == %@", listType)
+        
+        do {
+            let results = try viewContext.fetch(fetchRequest)
+            
+            if let existingScore = results.first {
+                // Incrementa o score do tipo existente
+                existingScore.score += 1
+            } else {
+                // Caso não exista, cria um novo
+                let newScore = KanaScore(context: viewContext)
+                newScore.listType = listType
+                newScore.score = 1
+            }
+            
+            // Salva as alterações no contexto
+            try viewContext.save()
+        } catch {
+            print("Erro ao salvar o score para o tipo \(listType): \(error)")
+        }
+    }
+
 }
