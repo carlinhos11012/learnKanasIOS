@@ -108,7 +108,6 @@ struct MainView: View {
     }
 
     private func saveScore() {
-        // Cria uma busca para encontrar o KanaScore existente para o listType atual
         let fetchRequest: NSFetchRequest<KanaScore> = KanaScore.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "listType == %@", listType)
         
@@ -116,16 +115,13 @@ struct MainView: View {
             let results = try viewContext.fetch(fetchRequest)
             
             if let existingScore = results.first {
-                // Incrementa o score do tipo existente
                 existingScore.score += 1
             } else {
-                // Caso não exista, cria um novo
                 let newScore = KanaScore(context: viewContext)
                 newScore.listType = listType
                 newScore.score = 1
             }
             
-            // Salva as alterações no contexto
             try viewContext.save()
         } catch {
             print("Erro ao salvar o score para o tipo \(listType): \(error)")

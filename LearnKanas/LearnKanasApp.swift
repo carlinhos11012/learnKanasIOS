@@ -1,10 +1,3 @@
-//
-//  LearnKanasApp.swift
-//  LearnKanas
-//
-//  Created by user266820 on 10/16/24.
-//
-
 import SwiftUI
 import CoreData
 
